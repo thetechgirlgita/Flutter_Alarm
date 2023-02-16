@@ -10,6 +10,19 @@ class wheeler extends StatefulWidget {
 class _wheelerState extends State<wheeler> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text("Wheel Game" ,
+        style: TextStyle(
+          color: Colors.black 
+        ),
+        
+        ),
+        centerTitle: true,
+      ),
+    );
+    
   }
 }
