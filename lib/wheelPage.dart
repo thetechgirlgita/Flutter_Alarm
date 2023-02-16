@@ -28,6 +28,16 @@ class _wheelerState extends State<wheeler> {
       body:
       Container(
          color: Colors.pinkAccent.shade100,
+         // ignore: prefer_const_constructors
+         child: AlertDialog(
+          title: Center( child: Text("Spin a Wheel")),
+          content: Text("Let's see how much can you earn by luck."),
+          
+          actions: [
+          
+        
+
+         ]),
 
       )
     );
