@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
 class wheeler extends StatefulWidget {
   const wheeler({super.key});
@@ -11,17 +12,24 @@ class _wheelerState extends State<wheeler> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text("Wheel Game" ,
+        backgroundColor: Colors.pinkAccent.shade100,
+        title: Text("Fortune Wheel Game" ,
+
         style: TextStyle(
-          color: Colors.black 
+          color: Colors.black ,
+          fontWeight: FontWeight.bold,
         ),
         
         ),
         centerTitle: true,
       ),
+      body:
+      Container(
+         color: Colors.pinkAccent.shade100,
+
+      )
     );
     
   }
