@@ -70,18 +70,16 @@ class _spinWheelState extends State<spinWheel> {
                   });
                   print(reward);
                   ScaffoldMessenger.of(context).showSnackBar(
-
-SnackBar(
-                content: GradientText(
-              "Hurray You Just  Won  $reward Points !",
-              colors: [
-                Color(0xff0072b1),
-                Colors.lightBlueAccent.shade100,
-              ],
-                ),
-                  )
-
- 
+                    SnackBar(
+                      content: GradientText(
+                        "Hurray You Just  Won  $reward Points !",
+                        colors: [
+                          Color(0xff0072b1),
+                          Colors.lightBlueAccent.shade100,
+                        ],
+                      ),
+                    ),
+                  );
                 },
               ),
             ),
@@ -113,10 +111,8 @@ SnackBar(
                   ),
                 )),
 
-            
-                
-                       // Text("Hurray you got $reward"),
-    )])),
+            // Text("Hurray you got $reward"),
+          ])),
     );
   }
 }
