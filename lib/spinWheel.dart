@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:rxdart/rxdart.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
@@ -10,7 +11,15 @@ class spinWheel extends StatefulWidget {
 }
 
 class _spinWheelState extends State<spinWheel> {
-  StreamController<int> selected = StreamController<int>();
+  final selected = BehaviorSubject<int>();
+  //StreamController<int> selected = StreamController<int>();
+  int reward = 0;
+  @override
+  void dispose() {
+    selected.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +31,7 @@ class _spinWheelState extends State<spinWheel> {
               height: MediaQuery.of(context).size.height / 2,
               width: MediaQuery.of(context).size.width / 2,
               child: FortuneWheel(
-                animateFirst: true,
+                //animateFirst: true,
                 physics: CircularPanPhysics(
                   duration: Duration(seconds: 2),
                   curve: Curves.decelerate,
@@ -30,16 +39,16 @@ class _spinWheelState extends State<spinWheel> {
                 onFling: () {
                   selected.add(1);
                 },
-                selected: Stream.value(0),
+                selected: selected,
                 indicators: <FortuneIndicator>[
                   FortuneIndicator(
                       alignment: Alignment.centerRight,
                       child: TriangleIndicator(color: Colors.yellow))
                 ],
                 styleStrategy: UniformStyleStrategy(
-                  //borderColor: //(Colors.yellow, Colors.red),
-                  color: Colors.red,
-                  borderWidth: 5,
+                  borderColor: Colors.black26,
+                  color: Colors.pink.shade100,
+                  borderWidth: 1,
                 ),
                 items: [
                   FortuneItem(
@@ -55,24 +64,33 @@ class _spinWheelState extends State<spinWheel> {
                 ],
                 onAnimationEnd: () {
                   print("Value : " + "$selected");
+                  setState(() {});
                 },
               ),
             ),
             GestureDetector(
                 onTap: () {
                   setState(() {
-                    selected.add(1);
+                    selected.add(Fortune.randomInt(0, 7));
                   });
                 },
-                child: TextButton(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Colors.black26,
+                    ),
+                    color: Colors.pink.shade100,
+                    //  color: Colors.pink.shade100,
+                  ),
+                  height: 40,
+                  width: 120,
+                  child: Center(
                     child: Text('Spin Again'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => spinWheel(),
-                          ));
-                    }))
+                  ),
+                  //color: Colors.pink.shade100,
+                )),
+            Text("Hurray you got $selected"),
           ])),
     );
   }
