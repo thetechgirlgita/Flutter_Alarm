@@ -33,9 +33,10 @@ class _wheelerState extends State<wheeler> {
       // color: Colors.pinkAccent.shade100,
       // ignore: prefer_const_constructors
       child: AlertDialog(
-          backgroundColor: Colors.pinkAccent.shade100,
-          title: Center(child: Text("Spin a Wheel")),
-          content: Text("Let's see how much can you earn by luck."),
+          backgroundColor: Color(0xff0072b1),
+          title: Text("Surprise", style: TextStyle(color: Colors.white)),
+          content: Text("Click on 'Open Surprise' to get your prize.",
+              style: TextStyle(color: Colors.white)),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -46,11 +47,17 @@ class _wheelerState extends State<wheeler> {
                     ));
               },
               child: Container(
-                  height: 30,
-                  width: 100,
-                  child: Text(
-                    "Spin the wheel",
-                    style: TextStyle(color: Colors.white),
+                  height: 35,
+                  width: 120,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                  ),
+                  child: Center(
+                    child: Text(
+                      "Open Surprise",
+                      style: TextStyle(color: Colors.blue),
+                    ),
                   )),
             )
           ]),
