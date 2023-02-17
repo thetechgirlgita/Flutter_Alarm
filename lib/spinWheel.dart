@@ -23,14 +23,19 @@ class _spinWheelState extends State<spinWheel> {
               width: MediaQuery.of(context).size.width / 2,
               child: FortuneWheel(
                 animateFirst: true,
-                selected: selected.stream,
                 physics: CircularPanPhysics(
                   duration: Duration(seconds: 2),
                   curve: Curves.decelerate,
                 ),
                 onFling: () {
-                  selected.add(4);
+                  selected.add(1);
                 },
+                selected: Stream.value(0),
+                indicators: <FortuneIndicator>[
+                  FortuneIndicator(
+                      alignment: Alignment.centerRight,
+                      child: TriangleIndicator(color: Colors.yellow))
+                ],
                 styleStrategy: UniformStyleStrategy(
                   //borderColor: //(Colors.yellow, Colors.red),
                   color: Colors.red,
